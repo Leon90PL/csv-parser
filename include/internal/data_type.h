@@ -272,10 +272,15 @@ namespace csv {
                         // Ex: '510-123-4567'
                         return DataType::CSV_STRING;
                     }
+                    
+                    // Ex: 25912186-113488
+                    if (has_digit)
+                        return DataType::CSV_STRING;
 
                     neg_allowed = false;
                     break;
                 case '.':
+                case ',':
                     if (!dot_allowed) {
                         return DataType::CSV_STRING;
                     }
